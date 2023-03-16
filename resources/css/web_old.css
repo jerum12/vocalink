@@ -1,0 +1,806 @@
+/* Standard Web Application Stylesheet */
+
+/*Import Open Sans Font*/
+
+@font-face {
+  font-family: 'light';
+	src:	url('font/OpenSans-Light.eot');
+  src:  url('font/OpenSans-Light.woff2') format('woff2'),
+				url('font/OpenSans-Light.woff') format('woff'),
+				url('font/OpenSans-Light.ttf') format('truetype');
+} 
+
+@font-face {
+	font-family: 'regular';
+	src:	url('font/OpenSans-Regular.eot');
+  src:  url('font/OpenSans-Regular.woff2') format('woff2'),
+				url('font/OpenSans-Regular.woff') format('woff'),
+				url('font/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'semibold';
+	src:	url('font/OpenSans-Semibold.eot');
+	src:  url('font/OpenSans-Semibold.woff2') format('woff2'),
+				url('font/OpenSans-Semibold.woff') format('woff'),
+				url('font/OpenSans-Semibold.ttf') format('truetype');
+	}	
+
+	
+
+/***** Basic HTML tag styles ***********************************************
+	Overriding some of the default properties defined in normalize.css
+***************************************************************************/
+
+body, input, select, textarea, button, table, p{
+	font: 13px "light"; 
+	}
+body{background:#FFF;}	
+h1,h2,h3,h4,h5,h6{
+	font: 13px "regular";	
+	text-transform:uppercase;
+	color:#333;
+	margin:0;
+	padding:0;
+	}	
+
+h1{	/*Transaction Name*/
+	font-family: "semibold";
+	font-weight:normal;
+	font-size:1.5em;
+	color: #990;
+	margin:10px 0 !important;	
+	border-bottom:1px solid #CCC;
+	}
+
+h2{
+	font-size:2.0em;
+	text-transform:none;
+	text-align:center;
+	}
+h3{
+	font-size:1.0em;
+	text-align:center;
+	}
+h4{
+	margin-top:10px;
+	font-size:1.2em;
+	border-bottom:1px solid #CCC;	
+	}
+
+h5{ /*Panel Heading Title*/
+	margin:0;
+	padding:0;
+	font-size:1.12em;
+	color:#058CC9;
+	text-transform:uppercase;	
+	}
+	
+h6{	/*Section Header*/
+	margin:0;
+	padding:0;
+	font-size:1.1em;
+	color:#060;
+	display:inline-block;
+	width:auto;
+	text-transform:uppercase;	
+	}
+	
+p{margin:0 0 10px;}
+
+ul, ol, table{
+	font-size:1.0em;	
+	}
+
+ol{
+	list-style-position:outside;
+	list-style:decimal !important;	
+	}
+
+ul{
+	padding:0;	
+	}
+
+ul > li{ 
+	list-style:none; 
+	margin:0; 
+	padding:0;
+	}
+
+th{
+	background:#3a7f1a;
+	color:#FFF;
+	vertical-align:middle;
+	font-size:1.0em;
+	}
+td{
+	vertical-align:middle !important;	
+	}	
+
+tfoot{
+	color:#333;
+	font-size:0.9em;
+	border-top:2px solid #CCC;	
+	}
+
+tfoot div{
+	text-align:center;
+	height:30px;
+	padding-top:6px;
+	}	
+tfoot .form-control,tfoot .btn{
+	border:1px solid #CCC;
+	height:30px;
+	padding:6px 10px;
+	vertical-align:middle;
+	font-size:1.0em;
+	color:#999;
+	margin-top:-6px;	
+	}
+
+tfoot .form-control{
+	width:50px;
+	display:inline-block;
+	}	 	
+tfoot .control-label{
+	text-align:left !important;	
+	padding-left:0 !important;
+	}
+
+
+a:link, a:focus, a:visited{
+	color:#058CC9;
+	text-decoration:none;
+	background:none;
+	outline:none;
+	}
+a:hover{
+	color:#C00;	
+	}
+
+fieldset{
+	margin:0;	
+	padding:2px 5px 5px;
+	}
+legend{
+	font-size:0.9em;
+	width:auto;
+	background:none;
+	margin:10px 0 5px;	
+	}
+
+legend img{margin:0 5px}
+
+textarea{resize:none}
+
+
+/***** Bootstrap Elements *************************************************
+	Overriding some of the bootstrap properties
+***************************************************************************/
+
+.control-label, .form-control, .form-control-static, .checkbox label, .radio label{
+	color:#333;
+	}
+	
+.form-control{
+	height:30px; 
+	padding:4px 12px;
+	font-size:1.0em;
+	line-height:1.42857143;
+	}	
+input[type=date].form-control, input[type=time].form-control, input[type=datetime-local].form-control, input[type=month].form-control{
+	line-height: 1.42857143;	
+	}
+	
+.form-control[disabled]{
+	box-shadow:none;	
+	}	
+	
+.form-group{margin-bottom:5px}
+.form-horizontal .control-label{
+	font-family:"semibold";
+	padding:7px 0 0 15px; 
+	font-weight:normal;
+	}
+	
+.form-control-static{
+	min-height:auto; 
+	padding:6px 0 0; 
+	margin:0;
+	}
+.checkbox label, .radio label{line-height:1.7}
+.form-horizontal .checkbox, .form-horizontal .radio{padding-top:3px}
+.radio ul, .checkbox ul{margin:2px 0 0}
+.radio li, .checkbox li{clear:both; float:none;}
+.help-block{
+	padding-top:2px;
+	font-size:0.95em;	
+	}	
+.table-responsive{border:1px solid #CCC;}
+.table-responsive table{margin:0}
+
+.btn{outline:none !important}
+.btn-sm{padding:3px 10px 4px}
+
+.form-group div[class*="col-"] > div[class*="col-"]:first-child{padding-left:0; padding-right:30px;}
+
+.input-group-addon{
+	background:none !important;	
+	}
+.input-group-btn .btn{
+	background:none;
+	line-height:normal;
+	color:#058CC9;
+	padding: 5px 10px 4px!important;	
+	}
+
+.btn-default[disabled], .btn-default[disabled]:hover, .input-group-btn .btn-default[disabled], .input-group-btn .btn-default[disabled]:hover{
+	background:#EEE;
+	color:#999;
+	border-color:#CCC;	
+	}
+
+	.badge{
+		position:absolute;
+		top:5px;
+		right:5px;
+		background-color:#F00 !important;
+	}
+
+.has-error .control-label{
+	color:#C00;	
+	}
+.has-error .form-control{
+	border:1px solid #C00;
+	box-shadow:0 0 2px #F00;	
+	}
+.alert-danger, .alert-success{
+	}
+
+.btn-link .glyphicon{
+	margin-right:5px;
+	}
+
+.btn-success{
+	background:	#3a7f1a;
+	border-color:#8dc641;
+	}	
+	
+/***** Application Structure **********************************************
+		 
+***************************************************************************/
+
+#app-header{
+	position:fixed;
+	top:0; left:0; right:0;
+	height:95px;
+	border-bottom:5px solid #FC3;
+	z-index:10;
+	background:#FFF;
+}
+
+	#app-brand{
+	  display: inline-block;
+	}
+
+	#app-logo{
+		display:table-cell;
+		vertical-align:middle;
+		text-align:center;
+		background: none;
+		background: url(img/logo.png) -50px 0 no-repeat;
+		height:80px;
+		width:300px;
+		margin:0 20 0 0px;
+		color:#999;
+		text-transform:uppercase;
+		}
+
+	#app-name{display:none;}	
+
+#top-nav {
+ 	display: inline-block;
+	margin:5px 0;
+	}
+
+#top-nav li {
+  position:relative;
+	float:left;
+	}
+	#top-nav li:hover{
+			
+		}
+	#top-nav li a:link, #top-nav li a:focus, #top-nav li a:visited{
+		display:inline-block;
+		color:#999;
+		width:70px;
+		padding:22px 15px;
+		font-size:0.85em;
+		text-transform:uppercase;
+	  	text-align: center;
+	} 
+
+	#top-nav li a:hover{
+		color:#090;
+		text-decoration:none;
+		background:#f9f9f9;
+		}
+	#top-nav li.active *{
+		color:#CCC;
+		cursor:default;	
+		}
+	#top-nav li.active:hover, #top-nav li.active a:hover{
+		background:none;	
+		}	
+	
+	#top-nav span, #top-nav i{
+		display:block; 
+		padding:0; 
+		margin:0
+		}
+	#top-nav i{
+		font-size:1.5em;
+		margin:0 0 5px;
+		}
+
+#app-footer{
+	position:relative;
+	background:#060;
+	padding:10px 0 5px;
+	text-align:center;
+	color:#FFF;
+	}	
+
+	.footer-nav{
+		float:right;
+		margin-left:20px;
+		margin-right:20px;
+		}
+	.footer-nav li{
+		margin-left:10px;
+		margin-right:10px;	
+		}
+	.footer-nav a, .footer-nav a:focus, .footer-nav a:visited{
+		color:#999;	
+		}
+	
+	.footer-nav span{
+		display:inline-block;	
+		}
+
+
+#app-body{
+	position: relative;
+	margin-top:95px;
+	}
+
+#app-contents{
+	padding:0;
+	}	
+	
+#app-menu{
+	left:0;	
+	background:#E4E4E4;
+	padding:0;
+	}
+
+
+/***** Menu Structure *****************************************************
+	Menu structure and element styles			 
+***************************************************************************/
+
+	#app-menu *{
+		font-size:0.98em;	
+		}
+	#app-menu .list-group{ 
+		background:none;
+		padding:0;
+		margin:0;
+		position:relative;
+		}
+
+	#app-menu .list-group-item{
+		border:none;
+		padding:0;
+		display:block;
+		clear:none;
+		float:none;
+		text-transform:uppercase;
+		}
+	
+	#app-menu a, #app-menu a:focus, #app-menu a:visited{
+		position:relative;
+		display:inline-block;
+		padding:5px 5px 5px 27px;
+		color:#333;
+		width:100%;
+		outline:none;	
+		}
+		
+	#app-menu a:hover{
+		background:#CCC;
+		text-decoration:none;	
+		}
+
+	.list-group-item .fa-angle-double-right, .list-group-item .glyphicon-menu-right{
+		/*applicable to level 1 menu item only*/
+		color:#FF0;
+		
+		}
+	.list-group-item .fa-caret-down, .list-group-item .fa-caret-up, .list-group-item .glyphicon-chevron-down, .list-group-item .glyphicon-chevron-up{
+		position:absolute;
+		top:auto;
+		bottom:8px; right:8px;
+		padding:0;
+		display:none;
+		font-size:0.8em !important;
+		}
+
+	#app-menu a i:first-child{
+		display:inline-block;	
+		vertical-align:top;
+		margin-top:2px;
+		}
+	#app-menu a span{
+		display:inline-block;
+		clear:none;
+		width:80%;
+		margin-top:2px;	
+		}				
+	#app-menu a span.badge{
+		width:auto;
+		top:7px;	
+		}
+	
+	
+/*** Main menu items */		
+
+	#app-menu > .list-group > li.list-group-item{
+		margin:0 0 2px;
+		width:100%;
+		}
+		
+	#app-menu > .list-group > li.list-group-item > a{
+		background:#3a7f1a;
+		color:#FFF;
+		}
+	#app-menu > .list-group > li.list-group-item > a:hover{
+		background:#8dc641;
+		color:#FFF;	
+		}	
+	
+	#app-menu > ul > li > a, #app-menu > ul > li > a:focus, #app-menu > ul > li > a:visited,  #app-menu > ul > li > a:hover, #app-menu > ul > li > a:active{
+		padding:8px;
+		}	
+		
+	
+/*** Submenu items */				
+	.sub-menu{
+		margin:5px auto 0;
+		display:none;
+		width:100%;
+		padding-bottom:10px;
+		border-bottom:1px solid #CCC;
+		}
+		
+	.sub-menu li.list-group-item{
+		width:100%;
+		padding:5px 0;
+		margin:0;
+		border-radius:0px;	
+		}
+
+	.sub-menu a:active, .sub-menu a.active{
+		color:#090;
+		background:#E4E4E4;		
+		}
+		
+	.m-display, .m-menu{display:none;} /*LEI*/
+	
+	.menu-ctrl-holder{
+		border-top:1px dashed #666;
+		text-align:right;
+		font-size:0.75em;	
+		display:block;
+		clear:both;
+		background:#104181;
+		padding:5px 0;	
+		}	
+		
+	.menu-ctrl{
+		background:none;
+		border:1px solid transparent;	
+		color:#999;
+		padding:2px 10px;
+		margin-right:10px;	
+		}	
+	.menu-ctrl:hover{
+		color:#FFF;
+		border:1px solid #FFF;	
+		}
+
+.section-block{
+	background:#FFF;
+	margin:20px 15px;	
+	clear:both;
+	}
+	.section-block.col-sm-6{
+		margin:20px 0;
+		clear:none;	
+		}
+.section-header{
+	color:#666;
+	padding:5px 0;
+	}
+
+	.section-header h6 > div{
+		font-size:0.95em;
+		padding-left:20px;
+		}
+		
+	.section-header h6 > span{
+		font-size:0.8em;
+		color:#F00;
+		display:inline-block;
+		margin-left:10px;	
+		}
+	
+	.section-header h6{
+		display:inline-block;
+		}
+	
+	.section-header .btn{
+		display:inline-block;
+		padding:2px 10px 2px 5px;
+		color:#058CC9;
+		}	
+	
+	.section-header .btn .fa, .section-header .btn .glyphicon{
+		color:#058CC9;
+		}
+		
+.section-content{
+	margin-top:1px;
+	clear:both;	
+	}
+
+	.section-content > .row{
+		margin:0;	
+		}
+
+
+
+.form-content{padding:20px 15px}
+.clear{display:block; clear:both; height:5px;}
+.amount{text-align:right !important;}		
+
+.mandatory::after{
+	content:'*';
+	color:#F00;
+	position:absolute; top:0; right:-8px;
+	font-size:0.9em;
+	}
+
+.mandatorySpan{
+	color:#F00; 
+/* 	position:absolute; top:0; right:-8px; */
+	font-size:0.9em;
+	}
+		
+.button-holder{
+	display:block;
+	clear:both;
+	text-align:right;	
+	margin:10px 15px 0;
+	border-top:1px solid #999;
+	padding:10px 0
+	}
+.button-holder .btn{
+	margin:0 3px;	
+	padding:3px 10px 4px;
+	}
+.button-holder .btn.btn-link{
+	padding-left:0;	
+	}
+
+.section-block > .button-holder{
+	margin-left:0; 
+	margin-right:0;
+	}
+
+
+/***** Customized Table ***************************************************
+	Structure for customized mobile-responsive table
+***************************************************************************/
+	
+	.div-th, .div-tr, .div-tf{clear:both;}
+	.div-tr.even div{background:#E2EEFC;}
+	.div-tr.odd div{background:#FFF}
+		
+	.div-th div, .div-tr div, .div-tf div{
+		text-align:left;
+		padding:5px 5px 5px 15px;
+		background:none;
+		font-size:0.9em;
+		min-height:33px;
+		position:relative;	
+		}
+	.div-th div, .div-tf div{
+		background:#F1F0F0;
+		color:#048000;	
+		}
+	.div-tf div{
+		border-top:1px solid #CCC;	
+		}
+
+	.cutdisplay{
+		display:inline-block;
+		overflow:hidden;
+		white-space:nowrap;
+		width:100%;	
+		}
+	.cutdisplay:after{
+		content:'...';
+		display:inline-block;
+		background:#FFF;
+		position:absolute;
+		right:0;
+		}	
+	.odd .cutdisplay:after{
+		background:#FFF;
+		}	
+	.even .cutdisplay:after{
+		background:#E2EEFC;
+		}	
+	
+	.cutdisplay a:first-child{
+		margin:0 5px 0 0;
+		vertical-align: top;	
+		}
+	.cutdisplay a img{margin-top:-3px}
+
+
+.m-label{display:none; color:#2e9f09; margin-right:10px}
+.m-show{display:none;}
+
+.reminders{
+	padding-top:20px;	
+	}
+.reminders .panel{
+	border:1px solid #CCC;
+	box-shadow:none;	
+	}	
+.reminders .panel-heading{
+	border-bottom:1px solid #CCC;
+	background:#E4E4E4;	
+	}
+	
+.reminders ol, .reminders ul{
+	padding-left:10px;	
+	margin-top:5px;
+	}
+
+.reminders ul ol{
+	margin-bottom:10px;	
+	}
+
+.reminders li{
+	margin-bottom:8px;
+	position:relative;	
+	}
+.reminders li:before{ 
+	content:'\2022';
+	font-size:2.0em;
+	width:14px;
+	position:absolute;
+	top:-8px; left:-14px;
+	}			
+
+.reminders ul > li{
+	border:none;
+	padding:0;
+	clear:both;
+	float:none;
+	width:100%;
+	}
+
+
+#request-info .section-content, #batch-info .section-content{
+		border-top: 3px double #CCC;
+		border-bottom: 3px double #CCC;
+		padding:10px 0;
+	}
+#batch-info .section-content{
+		border-bottom: none;
+		padding:0;
+	}	
+	
+#batch-info .section-content > div, #batch-info .section-content > div > div:first-child, #batch-info .section-content .form-group{
+	padding:0;
+	margin:0;	
+	}
+#batch-info .section-content > div .control-label:first-child{
+	text-align:left;
+	padding-left:0;
+	}	
+
+.red-hilight{
+	color:#F00;	
+	}
+	
+.err-inline{
+	color:#C00;
+	padding-top:2px;
+	}	
+
+
+#err-msg-div, #conf-msg-div{
+	border-radius:4px;
+	text-align:center;
+	font-size:0.9em;
+	color:#C00;
+	margin:20px 15px;
+	padding:10px;
+	}
+#conf-txn-details{
+	border:1px solid #C00;
+	padding:15px;
+	margin-bottom:40px;		
+	}
+
+				
+.input-group-select{
+display: table-cell;
+vertical-align: middle;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select{
+-webkit-appearance: none;
+-moz-appearance: none;
+-ms-appearance: none;
+-o-appearance: none;
+appearance: none;
+cursor: pointer;
+background: none !important;
+z-index: 1;
+padding-right:40px !important;
+}
+
+select[disabled]{
+	background:#EEE !important;
+	color:#999;	
+	}
+	
+
+.input-group-addon-c, .input-group-addon-c:hover, .input-group-addon-c:active, .input-group-addon-c:focus{
+	padding:0;
+	margin:0;
+	background:none;
+	}
+.input-group-addon-c > select.form-control{
+	height:inherit;
+	border: none;
+	padding: 0 35px 0 12px !important;
+	width:auto !important;
+	outline:none;
+	box-shadow:none;
+	font-size:0.95em;
+	}
+
+select ~ .fa, select ~ .glyphicon{
+position: absolute;
+right: 20px;
+top: 30%;
+color: #888;
+z-index: 0;
+outline: none;
+margin-right:10px;
+}
+.input-group-addon > select ~ .fa, .input-group-addon > select ~ .glyphicon{
+right: 0;
+}
+	

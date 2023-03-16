@@ -1,0 +1,540 @@
+@font-face {
+  font-family: 'light';
+  src: url('font/OpenSans-Light.eot');
+  src: url('font/OpenSans-Light.woff2') format('woff2'), url('font/OpenSans-Light.woff') format('woff'), url('font/OpenSans-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'regular';
+  src: url('font/OpenSans-Regular.eot');
+  src: url('font/OpenSans-Regular.woff2') format('woff2'), url('font/OpenSans-Regular.woff') format('woff'), url('font/OpenSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'semibold';
+  src: url('font/OpenSans-Semibold.eot');
+  src: url('font/OpenSans-Semibold.woff2') format('woff2'), url('font/OpenSans-Semibold.woff') format('woff'), url('font/OpenSans-Semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'form';
+  src: url('font/Lato-Regular.ttf') format('truetype');
+}
+@media (max-width: 1024px) {
+  #app-header #app-brand #app-sname {
+    display: none;
+  }
+  #app-header #app-brand #app-logo {
+    display: none;
+  }
+  #app-header #top-nav li {
+    display: inline-block;
+  }
+  #app-header #top-nav li a i {
+    margin: 0;
+  }
+  #app-header #top-nav > li > a span {
+    display: none;
+  }
+  #scriteria .section-contents > .row > .col-sm-10 + .col-sm-2 .btn:first-child,
+  #scriteria .section-content > .row > .col-sm-10 + .col-sm-2 .btn:first-child {
+    margin-top: 10px;
+  }
+  [class*="col-sm-9"] #tbl-paging td div span {
+    display: block;
+    border: none;
+    padding: 0;
+  }
+  #app-body .col-sm-10 > .col-sm-12,
+  #app-body .col-sm-10 > .col-sm-9,
+  #app-body .col-sm-10 > .col-sm-3{
+	padding-left:0 !important;
+	padding-right:0 !important;
+  }
+}
+@media (max-width: 768px) {
+  #app-header {
+    left: 0;
+  }
+  #app-header #app-brand {
+    float: none;
+    display: block;
+    margin-left: 20px;
+    margin-top: 4px;
+  }
+  #app-header #top-nav {
+    display: block;
+    position: absolute !important;
+    top: 0;
+    right: 5px;
+  }
+  #app-header #top-nav li {
+    padding: 0 10px;
+  }
+  #app-header #top-nav li a {
+    display: inline-block;
+    width: 20px;
+    height: 25px;
+    padding: 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  #app-header #top-nav li a .top-nav-title {
+    display: none;
+  }
+  #app-header #top-nav li:first-child {
+    padding: 3px 10px;
+  }
+  #app-header #top-nav li:not(:last-child) {
+    display: none;
+  }
+  #app-header #top-nav .glyphicon,
+  #app-header #top-nav .fa {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+  #app-header .m-menu {
+    display: block;
+    position: absolute;
+    background: none !important;
+  }
+  #app-menu {
+    width: 40%;
+    z-index: 20;
+    top: 0;
+    bottom: 0;
+    left: -40%;
+    overflow: auto;
+  }
+  #app-menu .m-menu {
+    cursor: default;
+  }
+  #app-menu .m-menu .glyphicon,
+  #app-menu .m-menu .fa {
+    display: none;
+  }
+  #app-menu .m-menu span:last-child {
+    padding: 15px 10px !important;
+  }
+  #app-menu ~ div {
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  #app-menu ~ div form > .row > [class*="col-sm"] {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  /* Menu Settings --- always temporary if mobile <=768*/
+  body.menu-temporary #app-header,
+  body.menu-permanent #app-header,
+  body.menu-temporary #app-footer,
+  body.menu-permanent #app-footer,
+  body.menu-temporary #app-menu ~ div,
+  body.menu-permanent #app-menu ~ div,
+  body.menu-temporary #app-contents,
+  body.menu-permanent #app-contents {
+    width: 100%;
+    left: 0;
+  }
+  body.menu-temporary #app-menu,
+  body.menu-permanent #app-menu {
+    left: calc(-40% - 7px);
+  }
+  body.menu-temporary #app-brand,
+  body.menu-permanent #app-brand {
+    margin-left: 30px !important;
+  }
+  #scriteria .section-header h6,
+  #scriteria .section-header h2 {
+    bottom: -5px !important;
+  }
+  #scriteria .section-contents > .row > div[class*="col-sm"]:first-child,
+  #scriteria .section-content > .row > div[class*="col-sm"]:first-child {
+    width: 100%;
+    border-right: none;
+  }
+  #scriteria .section-contents > .row > .col-sm-2,
+  #scriteria .section-content > .row > .col-sm-2 {
+    width: 100%;
+    height: auto;
+    clear: both;
+    border-top: 1px solid #999999;
+    padding-top: 10px;
+  }
+  #scriteria .section-contents > .row > .col-sm-2 .btn,
+  #scriteria .section-content > .row > .col-sm-2 .btn {
+    width: auto;
+    float: right;
+  }
+  #scriteria .section-contents > .row > .col-sm-2 .btn:first-child,
+  #scriteria .section-content > .row > .col-sm-2 .btn:first-child {
+    margin-top: 0;
+  }
+  #scriteria .section-contents > .row > .col-sm-2 .btn-link,
+  #scriteria .section-content > .row > .col-sm-2 .btn-link {
+    position: relative;
+    font-size: 11px;
+    margin-left: 0 !important;
+    margin-right: 0;
+  }
+  #scriteria .section-contents > .row > .col-sm-2 + .col-sm-2,
+  #scriteria .section-content > .row > .col-sm-2 + .col-sm-2 {
+    border-top: none;
+  }
+  #defcriteria .form-group,
+  #extcriteria .form-group {
+    padding: 0 5px;
+  }
+  #defcriteria .form-group .control-label[class*="col-sm"],
+  #extcriteria .form-group .control-label[class*="col-sm"] {
+    width: auto;
+    text-align: left;
+  }
+  #defcriteria .form-group div[class*="col-sm"],
+  #extcriteria .form-group div[class*="col-sm"] {
+    clear: both;
+    width: 100%;
+  }
+  #defcriteria .form-group.date-range div[class*="col-sm"],
+  #extcriteria .form-group.date-range div[class*="col-sm"] {
+    clear: both;
+    width: 50%;
+  }
+  #defcriteria .form-group.date-range div[class*="col-sm"] ~ div[class*="col-sm"],
+  #extcriteria .form-group.date-range div[class*="col-sm"] ~ div[class*="col-sm"] {
+    clear: none;
+    padding-left: 0;
+  }
+  #extcriteria {
+    margin-bottom: 10px;
+  }
+  #tbl-paging div {
+    text-align: center !important;
+  }
+}
+@media (max-width: 600px) {
+  #app-menu {
+    width: 60%;
+  }
+  body.menu-temporary #app-menu,
+  body.menu-permanent #app-menu {
+    left: calc(-60% - 7px);
+  }
+  #login-box.panel {
+    width: 90%;
+    margin: 20px auto;
+    box-shadow: none;
+    border: 1px solid #999999;
+  }
+  #login-box.panel .panel-body .form-control,
+  #login-box.panel .panel-body .btn {
+    height: 50px;
+  }
+  div[class*="col-sm"] + div[class*="col-sm"],
+  div[class*="col-sm"] + .form-field div[class*="col-sm"],
+  .form-field + .form-field div[class*="col-sm"] {
+    padding-left: 15px;
+  }
+  .section-block .section-contents .form-group .control-label[class*="col-sm"],
+  .section-block .section-content .form-group .control-label[class*="col-sm"] {
+    width: 33.33%;
+    text-align: right;
+    float: left;
+  }
+  .section-block .section-contents .form-group div[class*="col-sm"],
+  .section-block .section-content .form-group div[class*="col-sm"] {
+    clear: none;
+    width: 66.66%;
+    float: right;
+  }
+  .section-block .section-contents .form-group.date-range div[class="col-sm-4"],
+  .section-block .section-content .form-group.date-range div[class="col-sm-4"] {
+    clear: none;
+    width: 66.66%;
+  }
+  .section-block .section-contents .form-group.date-range div[class="col-sm-4"] ~ div[class="col-sm-4"],
+  .section-block .section-content .form-group.date-range div[class="col-sm-4"] ~ div[class="col-sm-4"] {
+    padding-left: 15px;
+  }
+  .section-block .section-contents.table-responsive.scroll-vertical,
+  .section-block .section-content.table-responsive.scroll-vertical {
+    margin: 10px 0 !important;
+  }
+  #scriteria .section-contents > .row > .col-sm-2,
+  #scriteria .section-content > .row > .col-sm-2 {
+    width: 100%;
+    height: auto;
+    clear: both;
+    border-top: 1px solid #999999;
+    padding-top: 10px;
+  }
+  #scriteria .section-contents > .row > .col-sm-2 .btn,
+  #scriteria .section-content > .row > .col-sm-2 .btn {
+    width: auto;
+    float: right;
+  }
+  #scriteria .section-contents > .row > .col-sm-2 .btn-link,
+  #scriteria .section-content > .row > .col-sm-2 .btn-link {
+    width: 100% !important;
+  }
+  #defcriteria .form-group,
+  #extcriteria .form-group {
+    padding: 0 5px;
+  }
+  #defcriteria .form-group .control-label[class*="col-sm"],
+  #extcriteria .form-group .control-label[class*="col-sm"] {
+    width: 33.33%;
+    text-align: right;
+    float: left;
+  }
+  #defcriteria .form-group div[class*="col-sm"],
+  #extcriteria .form-group div[class*="col-sm"] {
+    clear: none;
+    width: 66.66%;
+    float: left;
+  }
+  #defcriteria .form-group div[class*="col-sm"] + div[class*="col-sm"],
+  #extcriteria .form-group div[class*="col-sm"] + div[class*="col-sm"] {
+    margin-left: 33.33%;
+  }
+  #defcriteria .form-group.date-range div[class*="col-sm"],
+  #extcriteria .form-group.date-range div[class*="col-sm"] {
+    clear: none;
+    width: 66.66%;
+  }
+  #defcriteria .form-group.date-range div[class*="col-sm"] ~ div[class*="col-sm"],
+  #extcriteria .form-group.date-range div[class*="col-sm"] ~ div[class*="col-sm"] {
+    padding-left: 15px;
+  }
+  #defcriteria {
+    margin-bottom: 10px;
+  }
+  #txn-details .section-contents .form-group,
+  #txn-details .section-content .form-group {
+    margin-left: -15px;
+  }
+  #txn-details .section-contents > .row > div[class*="col-sm"],
+  #txn-details .section-content > .row > div[class*="col-sm"] {
+    width: 100%;
+    float: none;
+    border: none !important;
+  }
+  #txn-details .section-contents > .row > div[class*="col-sm"]:first-child,
+  #txn-details .section-content > .row > div[class*="col-sm"]:first-child {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dddddd !important;
+  }
+  .table-responsive.scroll-vertical {
+    overflow: hidden;
+  }
+  .table-responsive.scroll-vertical table,
+  .table-responsive.scroll-vertical thead,
+  .table-responsive.scroll-vertical tbody,
+  .table-responsive.scroll-vertical tfoot,
+  .table-responsive.scroll-vertical tr,
+  .table-responsive.scroll-vertical th,
+  .table-responsive.scroll-vertical td {
+    display: block;
+    width: 100%;
+    white-space: normal;
+    word-break: normal;
+  }
+  .table-responsive.scroll-vertical table thead {
+    display: none;
+  }
+  .table-responsive.scroll-vertical table tbody tr {
+    border: 1px solid #dddddd;
+    border-left: none;
+    border-right: none;
+    padding: 5px 2px !important;
+    position: relative;
+  }
+  .table-responsive.scroll-vertical table tbody tr td {
+    border: none !important;
+    padding-top: 0 !important;
+    padding-bottom: 5px !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    vertical-align: top;
+    text-align: left;
+    position: static;
+  }
+  .table-responsive.scroll-vertical table tbody tr td .radio,
+  .table-responsive.scroll-vertical table tbody tr td .checkbox {
+    position: static;
+  }
+  .table-responsive.scroll-vertical table tbody tr td .radio label,
+  .table-responsive.scroll-vertical table tbody tr td .checkbox label {
+    padding-left: 0;
+    position: static;
+    line-height: 1.42857143 !important;
+  }
+  .table-responsive.scroll-vertical table tbody tr td .radio label > [type="radio"],
+  .table-responsive.scroll-vertical table tbody tr td .checkbox label > [type="checkbox"] {
+    margin: 0 !important;
+    position: absolute;
+    top: 7px;
+    left: 10px;
+  }
+  .table-responsive.scroll-vertical table tbody tr td > label {
+    display: inline-block !important;
+    width: 29%;
+    margin: 0 0 0 15px;
+    padding: 0;
+    vertical-align: top;
+    text-align: right;
+  }
+  .table-responsive.scroll-vertical table tbody tr td > label + span {
+    display: inline-block !important;
+    clear: none;
+    width: calc(70% - 15px);
+    vertical-align: top;
+    padding-left: 15px;
+  }
+  .table-responsive.scroll-vertical table tbody tr td:last-child i {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+  }
+  .table-responsive.scroll-vertical table tfoot td > label {
+    display: block !important;
+    width: 100%;
+  }
+  .table-responsive.scroll-vertical table tfoot td > label + span {
+    display: block !important;
+    clear: both;
+    width: 100%;
+    white-space: normal;
+    padding-left: 10px;
+  }
+  .table-responsive.scroll-vertical .cb tbody tr td,
+  .table-responsive.scroll-vertical .rb tbody tr td {
+    width: calc(100% - 20px);
+    margin-left: 20px;
+  }
+  .table-responsive.scroll-vertical .cb thead {
+    display: block !important;
+  }
+  .table-responsive.scroll-vertical .cb thead th {
+    display: none;
+  }
+  .table-responsive.scroll-vertical .cb thead th:first-child {
+    display: block;
+  }
+  .table-responsive.scroll-vertical .cb thead th:first-child .checkbox {
+    margin: -3px 0 0 4px !important;
+    padding-top: 0 !important;
+    min-height: 1px !important
+						;
+  }
+  .table-responsive.scroll-vertical .cb thead th:first-child .checkbox label {
+    padding-top: 2px;
+    line-height: 1.42857143 !important;
+  }
+  .table-responsive.scroll-vertical .cb thead th:first-child .checkbox label [type="checkbox"] {
+    margin-top: 2px;
+  }
+  .table-responsive.scroll-vertical .cb thead th:first-child .checkbox label:after {
+    content: "Select All";
+    display: inline-block;
+    width: calc(100% - 20px);
+    height: 20px;
+    background: #0b800b;
+    position: absolute;
+    top: 2px;
+    left: 15px;
+  }
+}
+@media (max-width: 480px) {
+  .m-hide {
+    display: none !important;
+  }
+  .section-block .section-header .btn span {
+    display: none;
+  }
+  .section-block .section-contents .form-group .control-label[class*="col-sm"],
+  .section-block .section-content .form-group .control-label[class*="col-sm"] {
+    width: auto;
+    text-align: left;
+    float: none;
+    clear: both;
+  }
+  .section-block .section-contents .form-group div[class*="col-sm"],
+  .section-block .section-content .form-group div[class*="col-sm"] {
+    clear: both;
+    width: 100%;
+    float: none;
+  }
+  .section-block .section-contents .form-group.date-range div[class*="col-sm"],
+  .section-block .section-content .form-group.date-range div[class*="col-sm"] {
+    clear: both;
+    width: 100%;
+    float: none;
+  }
+  .section-block .section-contents .form-group.date-range div[class*="col-sm"] ~ div[class*="col-sm"],
+  .section-block .section-content .form-group.date-range div[class*="col-sm"] ~ div[class*="col-sm"] {
+    padding-left: 15px;
+  }
+  #scriteria .section-contents > .row > .col-sm-2,
+  #scriteria .section-content > .row > .col-sm-2 {
+    width: 100%;
+    height: auto;
+    clear: both;
+    border-top: 1px solid #999999;
+    padding-top: 10px;
+  }
+  #scriteria .section-contents > .row > .col-sm-2 .btn,
+  #scriteria .section-content > .row > .col-sm-2 .btn {
+    width: 100%;
+    float: none;
+  }
+  #scriteria .section-contents > .row > .col-sm-2 .btn-link,
+  #scriteria .section-content > .row > .col-sm-2 .btn-link {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+  }
+  #defcriteria .form-group,
+  #extcriteria .form-group {
+    padding: 0 5px;
+  }
+  #defcriteria .form-group .control-label[class*="col-sm"],
+  #extcriteria .form-group .control-label[class*="col-sm"] {
+    width: auto;
+    text-align: left;
+    float: left;
+  }
+  #defcriteria .form-group div[class*="col-sm"],
+  #extcriteria .form-group div[class*="col-sm"] {
+    clear: both;
+    width: 100%;
+    float: right;
+  }
+  #defcriteria .form-group.date-range div[class*="col-sm"],
+  #extcriteria .form-group.date-range div[class*="col-sm"] {
+    clear: both;
+    width: 100%;
+    float: right;
+  }
+  #defcriteria .form-group.date-range div[class*="col-sm"] ~ div[class*="col-sm"],
+  #extcriteria .form-group.date-range div[class*="col-sm"] ~ div[class*="col-sm"] {
+    padding-left: 15px;
+  }
+  #defcriteria {
+    margin-bottom: 10px;
+  }
+  #txn-details .section-contents .form-group,
+  #txn-details .section-content .form-group {
+    margin-left: -15px;
+  }
+  .table-responsive.scroll-vertical table tbody tr td > label {
+    text-align: left;
+    margin: 0;
+  }
+  .table-responsive.scroll-vertical table tbody tr td > label + span {
+    width: 100%;
+    padding: 0;
+  }
+}

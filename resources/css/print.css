@@ -1,0 +1,190 @@
+/* WEB Acknowledgment Print CSS*/
+
+/**Commented because Itext does not support the stated types, and will cause Download PDF error**/
+/* @font-face {
+  font-family: 'light';
+  src: url('font/OpenSans-Light.eot');
+  src: url('font/OpenSans-Light.woff2') format('woff2'), url('font/OpenSans-Light.woff') format('woff'), url('font/OpenSans-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'regular';
+  src: url('font/OpenSans-Regular.eot');
+  src: url('font/OpenSans-Regular.woff2') format('woff2'), url('font/OpenSans-Regular.woff') format('woff'), url('font/OpenSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'semibold';
+  src: url('font/OpenSans-Semibold.eot');
+  src: url('font/OpenSans-Semibold.woff2') format('woff2'), url('font/OpenSans-Semibold.woff') format('woff'), url('font/OpenSans-Semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'form';
+  src: url('font/Lato-Regular.ttf') format('truetype');
+} */
+
+html, body{
+	padding:0;
+	margin:0;
+}
+body{
+	-webkit-print-color-adjust: exact;
+	color-adjust: exact;
+}
+body *{
+	font: 12px 'regular', Arial, Helvetica, sans-serif !important;
+	}
+
+	#app-header{
+		position:relative;
+		background:#FFFFFF;
+		display:block;
+		padding:0 10px;
+		margin-bottom:20px;
+		min-height:100px;
+	}
+	
+	#app-brand{
+		display: block;
+	  	margin: 5px 0 0;
+	  	float:none;
+	  	position: static;
+	}
+	#app-brand *{
+	  	font-weight:bold !important;
+	  	font-size: 16px !important;
+	}
+	#app-logo{
+		display:none;
+		background: none;	
+	}
+	#app-sname {
+	  display: none;
+	  border-right: 1px solid #333333;
+	  vertical-align: middle;
+	  padding-right: 10px;
+	}
+	#app-name {
+	  display: none;
+	  margin-left: 10px;
+	  vertical-align: middle;
+	}
+	
+	#app-body{
+	  position:relative;
+	  float: none;
+	}
+	
+	h1{
+	  font-size:15px !important;
+	  font-weight:bold !important;
+	  text-transform: uppercase;	
+	  color: #026b05;
+	  margin:10px 0 !important;	
+	  border-bottom: 1px solid #CCC;
+	  padding-bottom:5px !important;
+	}
+	
+	
+	.alert{
+		border:1px solid #1a9101;
+		color:#1a9101;
+		padding:10px 15px;
+		margin:20px 0;
+		border-radius:4px;
+	}
+	
+	.section-block{
+	  	padding:0;
+	}
+	.section-content{
+	  	padding: 10px 15px !important;
+	  	margin:0;	
+	}
+	
+	.btn{
+		display:none;
+		}
+	
+	.form-group{
+		clear:both;
+		margin-bottom:10px;
+		float:none;
+	}
+	
+	.form-group:after{
+		display:block;
+		content:"";
+		clear:both;
+		}
+	.form-group *{
+		color: #333;	
+		}
+	
+	.col-sm-4{ 
+		width:100% !important;
+		float:none;
+		clear:both;
+		display:block;
+		padding:0;
+		}
+	.col-sm-8{ 
+		width:100%% !important;
+		float:none;
+		clear:both;
+		display:block;
+		padding:0;
+		}
+	
+	
+	label.control-label{
+		font-weight:bold !important;
+		padding:0;
+	}
+	
+	p.form-control-static{
+		font-weight:normal;
+		padding:0;
+		margin-bottom:10px;
+	}
+	table{
+		width:100%;
+	}
+	table thead th {
+		background: #0b800b !important;
+		color: #FFF !important;
+		border-right: 1px solid #999999;
+		padding: 5px 5px 5px 10px !important;
+	}
+	
+	table tbody td{
+		padding: 5px 5px 5px 13px !important;
+	}
+	
+	.section-content.table-responsive{
+		padding:0 !important;
+		overflow:hidden;
+	}
+	.table-responsive table{
+		width:100%;
+	}
+	.table-responsive table th,
+	.table-responsive table td {
+	   white-space: normal;
+	   word-break: normal;
+	}
+	.table-responsive table th{
+		background: #0b800b !important;
+		color: #FFF !important;
+	}
+	img{
+		border:none;
+		vertical-align:middle;
+		margin-right:10px;
+		width:300px !important;
+		height:80px !important;
+		display: block;
+		float:none;
+	}
+
+	div[class*="col-sm"] + div[class*="col-sm"]{
+		padding-left:15px !important;
+	}

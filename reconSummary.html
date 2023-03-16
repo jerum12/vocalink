@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vocalink Recon Screen</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    /> -->
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resources/css/datetimepicker_css/bootstrap-datetimepicker2.css" />
+    <link rel="stylesheet" href="resources/css/normalize.css" />
+    <link rel="stylesheet" href="resources/css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="resources/css/websolo.css" />
+    <link rel="stylesheet" href="resources/css/mobile.css" />
+    <link rel="stylesheet" href="resources/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="resources/css/pw-meter.css" />
+    <style>
+      .notify {
+        -webkit-animation-name: wiggle;
+        -webkit-animation-duration: 1s;
+        animation-name: wiggle;
+        animation-duration: 1s;
+      }
+
+      @-webkit-keyframes wiggle {
+        40% {
+          color: #7ec81b;
+          font-size: 16px;
+          transform: rotate(20deg);
+        }
+        80% {
+          color: #7ec81b;
+          font-size: 16px;
+          transform: rotate(-20deg);
+        }
+      }
+
+      @keyframes wiggle {
+        40% {
+          color: #7ec81b;
+          font-size: 16px;
+          transform: rotate(20deg);
+        }
+        80% {
+          color: #7ec81b;
+          font-size: 16px;
+          transform: rotate(-20deg);
+        }
+      }
+      #app-header #top-nav li {
+        float: right !important;
+      }
+      #app-header #top-nav li:nth-child(1) {
+        padding-right: 20px;
+      }
+      #app-header #top-nav > li:nth-child(1) span {
+        display: none;
+      }
+      #app-header #top-nav li:nth-child(2) {
+        padding-right: 10px;
+      }
+      #app-header #top-nav li:nth-child(3) {
+        padding-right: 10px;
+      }
+      #app-header #top-nav li:nth-child(4) {
+        border-right: 1px solid #cccccc;
+      }
+      #app-header #top-nav li:last-child {
+        clear: right;
+        padding-right: 10px;
+      }
+      #app-header #top-nav > li:last-child {
+        padding-right: 20px;
+      }
+      #app-header #top-nav li #usrInfo {
+        /* top:44px; */
+        width: 600px;
+      }
+      #app-header #top-nav li .panel {
+        width: 410px;
+      }
+      #app-brand {
+        position: relative;
+      }
+      #crptPeriod {
+        font-size: 11px;
+        padding-top: 5px;
+      }
+      #crptPeriod span {
+        display: inline-block;
+        padding-right: 5px;
+        margin-left: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-header">
+      <div class="container-fluid">
+        <div id="showMenu" class="m-menu">
+          <i class="fa fa-lg fa-bars"></i>
+        </div>
+
+        <div id="app-brand">
+          <span id="app-logo"></span>
+          <span id="app-sname">TeraSystem</span>
+          <span id="app-name">Vocalink Reconciliation System </span>
+        </div>
+
+        <ul id="top-nav">
+          <!-- START: Commented by LGT 20180817 -->
+          <!-- 				<li class="usrTopMenu">
+					<span id="app-notif"><i class="fa fa-bell"></i> <span>99</span></span>
+					<div id="usrInfo" class="topMenu">
+						<ul id="usrMenu" class="list-group">
+							<li class="list-group-item">
+								<a href="#">Notification</a>
+								<ul class="list-group" id="reportNotif">									
+									<li class="list-group-item"><a href="#">BAC - 000123</a></li>
+									<li class="list-group-item"><a href="#">EMP - 131233</a></li>
+									<li class="list-group-item"><a href="#">EMP - 441243</a></li>
+								</ul>
+							</li>										
+						</ul>
+					</div>
+				</li>	 -->
+          <!-- END: Commented by LGT 20180817 -->
+
+          <li>
+            <a target="_self" onclick="confirmLogout()">
+              <i class="fa fa-lg fa-sign-out"></i>
+              <span class="top-nav-title">Logout</span>
+            </a>
+          </li>
+
+          <!-- JPG 20190611 for Notifications -->
+          <li id="noti_li_broadcast">
+            <a id="broadcast_home"
+              ><i class="fa fa-lg fa-bell"></i
+              ><span class="badge" style="display: none"><i class="fa fa-exclamation"></i></span
+            ></a>
+          </li>
+
+          <li id="noti_Container">
+            <!-- <div id="noti_Counter">!</div> -->
+            <!--SHOW NOTIFICATIONS COUNT.-->
+
+            <div id="noti_Button">
+              <i class="fa fa-lg fa-cogs"></i>
+            </div>
+
+            <!--THE NOTIFICAIONS DROPDOWN BOX.-->
+            <div id="notifications">
+              <h3>Batch Process</h3>
+              <div>
+                <div id="appPendingList" class="panel appPanel">
+                  <div class="panel-heading"></div>
+                  <div class="panel-body">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <a
+                          class="statusNotif bpPending"
+                          id="FT0007"
+                          style="color: #999999 !important"
+                        >
+                          <span class="spin"> </span>
+                          CHECK-IN OFFLINE
+                          <span class="badge"> PENDING </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- END JPG -->
+          <li id="servDT">Wednesday | February 15, 2023 14:05:41</li>
+
+          <li class="usrTopMenu" style="cursor: pointer">
+            SUPER USER - 000000 | LAND BANK OF THE PHILIPPINES
+
+            <i class="fa fa-lg fa-fw fa-angle-down"></i>
+
+            <div id="usrInfo" class="topMenu">
+              <ul id="usrMenu" class="list-group">
+                <li class="list-group-item">
+                  <a>
+                    <i class="fa fa-lg fa-fw fa-sliders"></i>
+                    <span>Security Settings </span>
+                  </a>
+
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a href="ChangePassword.htm?transactionCode=000001" class="000001">
+                        <span>Change Password </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="list-group-item">
+                  <a>
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+
+                    <span>Account Profile </span>
+                  </a>
+
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a class="FT0033" onclick="showChangeRCModal()">
+                        <span>Change RC </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="list-group-item">
+                  <a>
+                    <i class="fa fa-lg fa-fw fa-history"></i>
+
+                    <span>Account Activity </span>
+                  </a>
+
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a
+                        href="AccessLogBackOfficeInquire.htm?transactionCode=000003&amp;thisUserOnly=true"
+                        class="000003"
+                      >
+                        <span>Access Log </span>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="transaxnLogInquire.htm?transactionCode=000004&amp;thisUserOnly=true"
+                        class="000004"
+                      >
+                        <span>Transaction Log </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3>MA DIANA N VILLAREAL</h3>
+                  <span id="userRole">FAD - User</span>
+
+                  <span style="display: none" id="userID">F512</span>
+                  <span style="display: none" id="userRCValue">500300</span>
+                  <span style="display: none" id="userRoleValue">03</span>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <label class="control-label col-sm-6">Last Login Date</label>
+                    <p class="form-control-static col-sm-6">01/16/2023 02:40:59 PM</p>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-6">Invalid Login Attempt</label>
+                    <p class="form-control-static col-sm-6">0</p>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-6">Last Password Changed</label>
+                    <p class="form-control-static col-sm-6">12/13/2022 05:07:43 PM</p>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-6">Password Validity</label>
+                    <p class="form-control-static col-sm-6">26 days</p>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-6">User ID Validity</label>
+                    <p class="form-control-static col-sm-6">302479 days</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="notif-broadcast">
+        <i class="fa fa-2x fa-bullhorn"></i>
+        <div class="news">
+          <h2></h2>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="notif-status" style="display: none">
+        <h6><i class="fa fa-check"></i> <span id="notifHeader">Batch Process Complete</span></h6>
+      </div>
+    </div>
+
+    <div class="col-sm-12" style="padding-top: 70px">
+      <div class="col-sm-12" id="txnForm" style="visibility: visible">
+        <form
+          id="txnBean"
+          name="txnBean"
+          class="form-horizontal"
+          action="/FRPS_FRONT/InquireLoadedFMSBalances.htm?transactionCode=FT0001&amp;sched_type=SOLO"
+          method="post"
+          autocomplete="off"
+        >
+          <h1>
+            Inquire Reconciiled Transaction
+            <button
+              type="button"
+              id="dashboardBtn"
+              class="btn btn-default"
+              data-toggle="tooltip"
+              title="Close"
+              onclick="window.location='Home.htm?dashboard=true'"
+            >
+              <i class="fa fa-times"></i>
+            </button>
+          </h1>
+
+          <noscript>
+            <div class="alert alert-danger" style="display: block">
+              Online Banking works best with JavaScript enabled. Please enable your JavaScript and
+              reload the page to proceed with your transaction.
+            </div>
+          </noscript>
+
+          <div class="contaiiner">
+            <div class="section-block load-info">
+              <div class="section-header">
+                <h2 style="">Last Recon Inbound Information</h2>
+              </div>
+              <div class="section-contents">
+                <div class="row">
+                  <div class="form-group">
+                    <label class="control-label col-sm-6">Last Business Date Reconciled</label>
+                    <div class="col-sm-6">
+                      <p class="form-control-static">12-27-2022</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-6">Recon Run Date</label>
+                    <div class="col-sm-6">
+                      <p class="form-control-static">02-14-2023</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-6">Run By</label>
+                    <div class="col-sm-6">
+                      <p class="form-control-static">super_user</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-header">
+                <div class="divInfo" style="text-align: left">
+                  <span>Summary of Transactions Processed from the latest Recon</span>
+                  <hr style="background: #104e8b; border: 0; height: 2px" />
+                </div>
+              </div>
+              <div class="section-content table-responsive">
+                <table id="teraTableId" class="table table-condensed table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th id="status" class="0" style="text-align: center">Transaction Status</th>
+                      <th id="atm_count" class="1" style="text-align: center">SA</th>
+                      <th id="purchase_intl_count" class="2" style="text-align: center">CA</th>
+                      <th id="purchase_local_count" class="3" style="text-align: center">LICC</th>
+                      <th id="purchase_local_count" class="3" style="text-align: center">LPC</th>
+                      <th id="purchase_local_count" class="3" style="text-align: center">MDS</th>
+                      <th id="total_count" class="4" style="text-align: center">
+                        Total No. of Transactions Processed
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="0" class="even">
+                      <td class="fmt_text">Matched Transaction</td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=1&amp;status=Matched"
+                          >374</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=2&amp;status=Matched"
+                          >514</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >4402</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >0</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >0</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">5290</td>
+                    </tr>
+                    <tr id="1" class="odd">
+                      <td class="fmt_text">IN BN Transaction</td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=1&amp;status=Settled Suspense"
+                          >0</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=2&amp;status=Settled Suspense"
+                          >10</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Settled Suspense"
+                          >5</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >1</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >0</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">16</td>
+                    </tr>
+                    <tr id="2" class="even">
+                      <td class="fmt_text">IN LBP Transaction</td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=1&amp;status=Suspense"
+                          >945</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=2&amp;status=Suspense"
+                          >2094</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Suspense"
+                          >49262</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >0</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >0</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">52301</td>
+                    </tr>
+                    <tr id="3" class="odd">
+                      <td class="fmt_text">Switch Float Transaction</td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=1&amp;status=In OCM Only"
+                          >137</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=2&amp;status=In OCM Only"
+                          >76</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=In OCM Only"
+                          >3152</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >2</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">
+                        <a
+                          class="linkColumns"
+                          href="TagTransactionSelect.htm?transactionCode=TAG003&amp;pymtType=3&amp;status=Matched"
+                          >0</a
+                        >
+                      </td>
+                      <td class="fmt_text" style="text-align: center">3367</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

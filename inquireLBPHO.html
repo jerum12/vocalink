@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vocalink Recon Screen</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resources/css/datetimepicker_css/bootstrap-datetimepicker2.css" />
+    <link rel="stylesheet" href="resources/css/normalize.css" />
+    <link rel="stylesheet" href="resources/css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="resources/css/websolo.css" />
+    <link rel="stylesheet" href="resources/css/mobile.css" />
+    <link rel="stylesheet" href="resources/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="resources/css/pw-meter.css" />
+    <style>
+      .notify {
+        -webkit-animation-name: wiggle;
+        -webkit-animation-duration: 1s;
+        animation-name: wiggle;
+        animation-duration: 1s;
+      }
+
+      @-webkit-keyframes wiggle {
+        40% {
+          color: #7ec81b;
+          font-size: 16px;
+          transform: rotate(20deg);
+        }
+        80% {
+          color: #7ec81b;
+          font-size: 16px;
+          transform: rotate(-20deg);
+        }
+      }
+
+      @keyframes wiggle {
+        40% {
+          color: #7ec81b;
+          font-size: 16px;
+          transform: rotate(20deg);
+        }
+        80% {
+          color: #7ec81b;
+          font-size: 16px;
+          transform: rotate(-20deg);
+        }
+      }
+      #app-header #top-nav li {
+        float: right !important;
+      }
+      #app-header #top-nav li:nth-child(1) {
+        padding-right: 20px;
+      }
+      #app-header #top-nav > li:nth-child(1) span {
+        display: none;
+      }
+      #app-header #top-nav li:nth-child(2) {
+        padding-right: 10px;
+      }
+      #app-header #top-nav li:nth-child(3) {
+        padding-right: 10px;
+      }
+      #app-header #top-nav li:nth-child(4) {
+        border-right: 1px solid #cccccc;
+      }
+      #app-header #top-nav li:last-child {
+        clear: right;
+        padding-right: 10px;
+      }
+      #app-header #top-nav > li:last-child {
+        padding-right: 20px;
+      }
+      #app-header #top-nav li #usrInfo {
+        /* top:44px; */
+        width: 600px;
+      }
+      #app-header #top-nav li .panel {
+        width: 410px;
+      }
+      #app-brand {
+        position: relative;
+      }
+      #crptPeriod {
+        font-size: 11px;
+        padding-top: 5px;
+      }
+      #crptPeriod span {
+        display: inline-block;
+        padding-right: 5px;
+        margin-left: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-header">
+      <div class="container-fluid">
+        <div id="showMenu" class="m-menu">
+          <i class="fa fa-lg fa-bars"></i>
+        </div>
+
+        <div id="app-brand">
+          <span id="app-logo"></span>
+          <span id="app-sname">TeraSystem</span>
+          <span id="app-name">Vocalink Reconciliation System </span>
+        </div>
+
+        <ul id="top-nav">
+          <!-- START: Commented by LGT 20180817 -->
+          <!-- 				<li class="usrTopMenu">
+					<span id="app-notif"><i class="fa fa-bell"></i> <span>99</span></span>
+					<div id="usrInfo" class="topMenu">
+						<ul id="usrMenu" class="list-group">
+							<li class="list-group-item">
+								<a href="#">Notification</a>
+								<ul class="list-group" id="reportNotif">									
+									<li class="list-group-item"><a href="#">BAC - 000123</a></li>
+									<li class="list-group-item"><a href="#">EMP - 131233</a></li>
+									<li class="list-group-item"><a href="#">EMP - 441243</a></li>
+								</ul>
+							</li>										
+						</ul>
+					</div>
+				</li>	 -->
+          <!-- END: Commented by LGT 20180817 -->
+
+          <li>
+            <a target="_self" onclick="confirmLogout()">
+              <i class="fa fa-lg fa-sign-out"></i>
+              <span class="top-nav-title">Logout</span>
+            </a>
+          </li>
+
+          <!-- JPG 20190611 for Notifications -->
+          <li id="noti_li_broadcast">
+            <a id="broadcast_home"
+              ><i class="fa fa-lg fa-bell"></i
+              ><span class="badge" style="display: none"><i class="fa fa-exclamation"></i></span
+            ></a>
+          </li>
+
+          <li id="noti_Container">
+            <!-- <div id="noti_Counter">!</div> -->
+            <!--SHOW NOTIFICATIONS COUNT.-->
+
+            <div id="noti_Button">
+              <i class="fa fa-lg fa-cogs"></i>
+            </div>
+
+            <!--THE NOTIFICAIONS DROPDOWN BOX.-->
+            <div id="notifications">
+              <h3>Batch Process</h3>
+              <div>
+                <div id="appPendingList" class="panel appPanel">
+                  <div class="panel-heading"></div>
+                  <div class="panel-body">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <a
+                          class="statusNotif bpPending"
+                          id="FT0007"
+                          style="color: #999999 !important"
+                        >
+                          <span class="spin"> </span>
+                          CHECK-IN OFFLINE
+                          <span class="badge"> PENDING </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- END JPG -->
+          <li id="servDT">Wednesday | February 15, 2023 14:05:41</li>
+
+          <li class="usrTopMenu" style="cursor: pointer">
+            SUPER USER - 000000 | LAND BANK OF THE PHILIPPINES
+
+            <i class="fa fa-lg fa-fw fa-angle-down"></i>
+
+            <div id="usrInfo" class="topMenu">
+              <ul id="usrMenu" class="list-group">
+                <li class="list-group-item">
+                  <a>
+                    <i class="fa fa-lg fa-fw fa-sliders"></i>
+                    <span>Security Settings </span>
+                  </a>
+
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a href="ChangePassword.htm?transactionCode=000001" class="000001">
+                        <span>Change Password </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="list-group-item">
+                  <a>
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+
+                    <span>Account Profile </span>
+                  </a>
+
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a class="FT0033" onclick="showChangeRCModal()">
+                        <span>Change RC </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="list-group-item">
+                  <a>
+                    <i class="fa fa-lg fa-fw fa-history"></i>
+
+                    <span>Account Activity </span>
+                  </a>
+
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a
+                        href="AccessLogBackOfficeInquire.htm?transactionCode=000003&amp;thisUserOnly=true"
+                        class="000003"
+                      >
+                        <span>Access Log </span>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="transaxnLogInquire.htm?transactionCode=000004&amp;thisUserOnly=true"
+                        class="000004"
+                      >
+                        <span>Transaction Log </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3>MA DIANA N VILLAREAL</h3>
+                  <span id="userRole">FAD - User</span>
+
+                  <span style="display: none" id="userID">F512</span>
+                  <span style="display: none" id="userRCValue">500300</span>
+                  <span style="display: none" id="userRoleValue">03</span>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <label class="control-label col-sm-6">Last Login Date</label>
+                    <p class="form-control-static col-sm-6">01/16/2023 02:40:59 PM</p>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-6">Invalid Login Attempt</label>
+                    <p class="form-control-static col-sm-6">0</p>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-6">Last Password Changed</label>
+                    <p class="form-control-static col-sm-6">12/13/2022 05:07:43 PM</p>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-6">Password Validity</label>
+                    <p class="form-control-static col-sm-6">26 days</p>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-6">User ID Validity</label>
+                    <p class="form-control-static col-sm-6">302479 days</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="notif-broadcast">
+        <i class="fa fa-2x fa-bullhorn"></i>
+        <div class="news">
+          <h2></h2>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="notif-status" style="display: none">
+        <h6><i class="fa fa-check"></i> <span id="notifHeader">Batch Process Complete</span></h6>
+      </div>
+    </div>
+
+    <div class="col-sm-12" style="padding-top: 70px">
+      <div class="col-sm-12" id="txnForm" style="visibility: visible">
+        <form
+          id="txnBean"
+          name="txnBean"
+          class="form-horizontal"
+          action="/FRPS_FRONT/InquireLoadedFMSBalances.htm?transactionCode=FT0001&amp;sched_type=SOLO"
+          method="post"
+          autocomplete="off"
+        >
+          <h1>
+            Inquire Loaded Outbound Instapay Data
+            <button
+              type="button"
+              id="dashboardBtn"
+              class="btn btn-default"
+              data-toggle="tooltip"
+              title="Close"
+              onclick="window.location='Home.htm?dashboard=true'"
+            >
+              <i class="fa fa-times"></i>
+            </button>
+          </h1>
+
+          <noscript>
+            <div class="alert alert-danger" style="display: block">
+              Online Banking works best with JavaScript enabled. Please enable your JavaScript and
+              reload the page to proceed with your transaction.
+            </div>
+          </noscript>
+
+          <div
+            style="
+              background: #edf0ff;
+              padding: 20px 40px;
+              box-shadow: 0 8px 20px 0 rgb(0 0 0 / 15%);
+              border-radius: 10px;
+              margin-bottom: 15px;
+            "
+          >
+            <div class="row"><h2>Search Criteria</h2></div>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="fms_book" class="control-label col-sm-5 mandatory" id="labelBook"
+                    >E-Banking Channel</label
+                  >
+                  <div class="col-sm-7 for-fms-book">
+                    <div class="select">
+                      <input
+                        id="rc_code"
+                        name="rc_code"
+                        class="form-control"
+                        type="hidden"
+                        value="000000"
+                        fieldname="Filename"
+                        placeholder="Select Instruction ID"
+                        mandatory="true"
+                        maxlength="40"
+                      /><input
+                        id="rc_code_view"
+                        class="form-control"
+                        type="text"
+                        fieldname="Instruction ID"
+                        placeholder=" Instruction ID"
+                        mandatory="true"
+                        maxlength="40"
+                        value="MBA"
+                      /><i class="glyphicon glyphicon-menu-down"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="control-label col-sm-5"> Date & Time </label>
+                  <div class="col-sm-7">
+                    <div class="input-group dateFrom">
+                      <input
+                        id="dateFrom"
+                        name="dateFrom"
+                        class="form-control"
+                        placeholder="MM/DD/YYYY HH:MM:SS"
+                        mandatory="true"
+                        maxlength="19"
+                        type="text"
+                        value="02/09/2023 00:00:00"
+                      />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="fms_book" class="control-label col-sm-5" id="labelBook"
+                    >Transmitting Account Number</label
+                  >
+                  <div class="col-sm-7 for-fms-book">
+                    <div class="select">
+                      <input
+                        id="rc_code"
+                        name="rc_code"
+                        class="form-control"
+                        type="hidden"
+                        value="000000"
+                        fieldname="Transmitting Account Number"
+                        placeholder="Select Transmitting Account Number"
+                        mandatory="true"
+                        maxlength="40"
+                      /><input
+                        id="rc_code_view"
+                        class="form-control"
+                        type="text"
+                        fieldname="Transmitting Account Number"
+                        placeholder="Transmitting Account Number"
+                        mandatory="true"
+                        maxlength="40"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="fms_book" class="control-label col-sm-5" id="labelBook"
+                    >Receiving Account Number</label
+                  >
+                  <div class="col-sm-7 for-fms-book">
+                    <div class="select">
+                      <input
+                        id="fms_book"
+                        name="fms_book"
+                        class="form-control"
+                        type="hidden"
+                        value=""
+                        fieldname="Status"
+                        placeholder="Receiving Account Number"
+                        maxlength="40"
+                      /><input
+                        id="fms_book_view"
+                        class="form-control"
+                        type="text"
+                        fieldname="Book"
+                        placeholder=" Receiving Account Number"
+                        maxlength="40"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="fms_book" class="control-label col-sm-5" id="labelBook"
+                    >Reconciliation Status</label
+                  >
+                  <div class="col-sm-7 for-fms-book">
+                    <div class="select">
+                      <input
+                        id="rc_code"
+                        name="rc_code"
+                        class="form-control"
+                        type="hidden"
+                        value="000000"
+                        fieldname="Select Reconciliation Status"
+                        placeholder="Select Reconciliation Status"
+                        mandatory="true"
+                        maxlength="40"
+                      /><input
+                        id="rc_code_view"
+                        class="form-control"
+                        type="text"
+                        fieldname="Reconciliation Status"
+                        placeholder="Select Reconciliation Status"
+                        mandatory="true"
+                        maxlength="40"
+                      /><i class="glyphicon glyphicon-menu-down"></i>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="fms_book" class="control-label col-sm-5" id="labelBook"
+                    >Instruction ID</label
+                  >
+                  <div class="col-sm-7 for-fms-book">
+                    <div class="select">
+                      <input
+                        id="rc_code"
+                        name="rc_code"
+                        class="form-control"
+                        type="hidden"
+                        value="000000"
+                        fieldname="Filename"
+                        placeholder="Select Instruction ID"
+                        mandatory="true"
+                        maxlength="40"
+                      /><input
+                        id="rc_code_view"
+                        class="form-control"
+                        type="text"
+                        fieldname="Instruction ID"
+                        placeholder=" Instruction ID"
+                        mandatory="true"
+                        maxlength="40"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="fms_book" class="control-label col-sm-5" id="labelBook"
+                    >Local Instrument</label
+                  >
+                  <div class="col-sm-7 for-fms-book">
+                    <div class="select">
+                      <input
+                        id="fms_book"
+                        name="fms_book"
+                        class="form-control"
+                        type="hidden"
+                        value=""
+                        fieldname="Status"
+                        placeholder="Local Instrument"
+                        maxlength="40"
+                      /><input
+                        id="fms_book_view"
+                        class="form-control"
+                        type="text"
+                        fieldname="Book"
+                        placeholder=" Local Instrument"
+                        maxlength="40"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="fms_book" class="control-label col-sm-5" id="labelBook"
+                    >Bank Identifier</label
+                  >
+                  <div class="col-sm-7 for-fms-book">
+                    <div class="select">
+                      <input
+                        id="fms_book"
+                        name="fms_book"
+                        class="form-control"
+                        type="hidden"
+                        value=""
+                        fieldname="Status"
+                        placeholder="Local Instrument"
+                        maxlength="40"
+                      /><input
+                        id="fms_book_view"
+                        class="form-control"
+                        type="text"
+                        fieldname="Book"
+                        placeholder="Bank Identifier"
+                        maxlength="40"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="" style="display: flex; justify-content: end; gap: 10px; margin-top: 10px">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="doSubmit();"
+                style="background: #7fc374; color: #00126c"
+              >
+                <i class="fa fa-search"></i> <span xlabel="btnSearch">Search</span>
+              </button>
+              <button type="button" class="btn btn-default" xlabel="btnClear" onclick="doClear();">
+                <i class="fa fa-eraser"></i> Clear
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-default"
+                xlabel="btnExportXL"
+                onclick="exportToExcelTeraTable(['rc_code|code|codeDescription', 'fms_book|code|codeDescription', 'fms_acct', 'fms_sname'], ['RC Code', 'FMS Book', 'FMS Acct', 'FMS Sname'])"
+              >
+                <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>Export To Excel
+              </button>
+            </div>
+          </div>
+
+          <div class="section-block" style="border: 1px solid #c5c5c5">
+            <div class="section-content table-responsive">
+              <input
+                type="hidden"
+                id="prevOrderBy"
+                name="prevOrderBy"
+                value="upper(temp_fms.rc_code)"
+              />
+              <input type="hidden" id="orderBy" name="orderBy" value="upper(temp_fms.rc_code)" />
+              <input type="hidden" id="doSort" name="doSort" value="false" />
+              <input type="hidden" id="ignoreCase" name="ignoreCase" value="false" />
+              <input type="hidden" id="dbType" name="dbType" value="" />
+              <input
+                type="hidden"
+                id="columnNamesStr"
+                name="columnNamesStr"
+                value="rc_code rc_name fms_book fms_acct fms_sname fms_amt "
+              />
+              <input
+                type="hidden"
+                id="columnDBNamesStr"
+                name="columnDBNamesStr"
+                value="TEMP_FMS.rc_code name TEMP_FMS.fms_book TEMP_FMS.fms_acct CDE_FMS_CHART.FMS_SNAME TEMP_FMS.fms_amt "
+              />
+              <table
+                id="teraTableId"
+                class="table table-condensed table-hover table-striped"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      id="rc_code"
+                      onclick="document.getElementById('orderBy').value = this.id; document.getElementById('doSort').value = true;submitTableFromTH(this);"
+                      class="0"
+                    >
+                      Date & Time<span class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                    <th
+                      id="rc_name"
+                      onclick="document.getElementById('orderBy').value = this.id; document.getElementById('doSort').value = true;submitTableFromTH(this);"
+                      class="1"
+                    >
+                      Transmitting Account Number<span
+                        class="glyphicon glyphicon-chevron-up"
+                      ></span>
+                    </th>
+                    <th
+                      id="fms_book"
+                      onclick="document.getElementById('orderBy').value = this.id; document.getElementById('doSort').value = true;submitTableFromTH(this);"
+                      class="2"
+                    >
+                      Receiving Account Number<span class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                    <!-- <th
+                      id="fms_book"
+                      onclick="document.getElementById('orderBy').value = this.id; document.getElementById('doSort').value = true;submitTableFromTH(this);"
+                      class="2"
+                    >
+                      Reconciliation Status<span class="glyphicon glyphicon-chevron-up"></span>
+                    </th> -->
+                    <th
+                      id="fms_book"
+                      onclick="document.getElementById('orderBy').value = this.id; document.getElementById('doSort').value = true;submitTableFromTH(this);"
+                      class="2"
+                    >
+                      Instruction ID<span class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                    <th
+                      id="fms_book"
+                      onclick="document.getElementById('orderBy').value = this.id; document.getElementById('doSort').value = true;submitTableFromTH(this);"
+                      class="2"
+                    >
+                      Local Instrument<span class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                    <th
+                      id="fms_book"
+                      onclick="document.getElementById('orderBy').value = this.id; document.getElementById('doSort').value = true;submitTableFromTH(this);"
+                      class="2"
+                    >
+                      Bank Identifier<span class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                    <th
+                      id="fms_book"
+                      onclick="document.getElementById('orderBy').value = this.id; document.getElementById('doSort').value = true;submitTableFromTH(this);"
+                      class="2"
+                    >
+                      Transaction Amount<span class="glyphicon glyphicon-chevron-up"></span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="0" class="even">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="1" class="odd">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="2" class="even">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="3" class="odd">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="4" class="even">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="5" class="odd">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="6" class="even">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="7" class="odd">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="8" class="even">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                  <tr id="9" class="odd">
+                    <td class="fmt_text">2022-12-26 15:31:27</td>
+                    <td class="fmt_text">1234567890</td>
+                    <td class="fmt_text">12345678901234567890</td>
+                    <!-- <td class="fmt_text">Matched</td> -->
+                    <td class="fmt_text">19990909BDOPHBN1XXXB00000001 2345678</td>
+                    <td class="fmt_text">IBPS</td>
+                    <td class="fmt_text">BANK1PH1XXX</td>
+                    <td class="fmt_decimal">123.00</td>
+                  </tr>
+                </tbody>
+
+                <tfoot>
+                  <tr id="tbl-paging">
+                    <td colspan="8">
+                      <div class="col-sm-3" style="width: 371.259px; left: 0px">
+                        Total No. of Records: <b id="numrecords">10</b>
+                      </div>
+                      <div class="col-sm-6" style="width: 732.045px; left: 0px">
+                        <input type="hidden" name="pagenum" id="pagenum" value="" />
+                        <button
+                          type="button"
+                          class="btn btn-default"
+                          title="First Page"
+                          id="tTblBtnFirst"
+                          onclick="searchForm(this, '1', 'First');"
+                          disabled="disabled"
+                        >
+                          «
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-default"
+                          title="Previous Page"
+                          id="tTblBtnPrev"
+                          onclick="searchForm(this, '0', 'Previous');"
+                          disabled="disabled"
+                        >
+                          ‹
+                        </button>
+                        <input
+                          type="text"
+                          name="goto1/2"
+                          class="form-control"
+                          onkeypress="return keyRestrict(event, '0123456789')"
+                          disabled="disabled"
+                        />
+
+                        <button
+                          type="button"
+                          name="buttongoto"
+                          class="btn btn-default"
+                          disabled="disabled"
+                          onclick="document.txnBean.submit();"
+                        >
+                          Go To Page
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-default"
+                          title="Next Page"
+                          id="tTblBtnNext"
+                          disabled="disabled"
+                          onclick="searchForm(this, '2', 'Next');"
+                        >
+                          ›
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-default"
+                          title="Last Page"
+                          disabled="disabled"
+                          id="tTblBtnLast"
+                          onclick="searchForm(this, '2', 'Last');"
+                        >
+                          »
+                        </button>
+                      </div>
+                      <div class="col-sm-3" style="width: 371.259px; left: 0px">Page 1 of 1</div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
