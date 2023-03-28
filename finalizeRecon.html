@@ -337,7 +337,7 @@
 
           <div class="section-block load-info">
             <div class="section-header">
-              <h2 style="">Current Business Date Recon Information</h2>
+              <h2 style="">New Business Date</h2>
             </div>
             <div class="section-contents">
               <div class="row">
@@ -363,6 +363,18 @@
                     </div>
                   </div>
                 </div>
+        
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block load-info">
+            <div class="section-header">
+              <h2 style="">Current Business Date Recon Information</h2>
+            </div>
+            <div class="section-contents">
+              <div class="row">
+               
                 <div class="form-group">
                   <label class="control-label col-sm-6">Current Business Date</label>
                   <div class="col-sm-6">
@@ -393,6 +405,18 @@
                     <p class="form-control-static">Super Admin</p>
                   </div>
                 </div>
+        
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block load-info">
+            <div class="section-header">
+              <h2 style="">Database Backup Information</h2>
+            </div>
+            <div class="section-contents">
+              <div class="row">
+               
                 <div class="form-group">
                   <label class="control-label col-sm-6">Last Backup Date</label>
                   <div class="col-sm-6">
@@ -402,7 +426,42 @@
               </div>
             </div>
           </div>
-          <div>
+
+          <div class="col-sm-12 d-flex justify-content-center">
+            <div
+              class="card"
+              style="
+                width: 100%;
+                height: 200px;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid #000;
+                border-radius: 10px;
+              "
+            >
+              <div class="card-body">
+                <h1 class="card-title text-center">Finalize Recon For the Day</h1>
+                <p class="card-text" style="font-size: 15px; text-align: center">
+                  This will conclude the recon for the current business date. All batch processes will be reset to initial state, preparing for the recon process of the next business date. Database backup and generation of feedback files will automatically be performed during this process.
+                </p>
+                <div
+                  class="text-center"
+                  style="position: absolute; bottom: 0; left: 0; right: 0; padding: 10px"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#myModal"
+                    style="background: #7fc374; color: #00126c"
+                  >
+                    <i class="fa fa-handshake-o" aria-hidden="true"></i>Reconcile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div>
             <button
               type="button"
               class="btn btn-success pull-right"
@@ -410,7 +469,7 @@
             >
               <i class="fa fa-share-square" aria-hidden="true"></i>Proceed
             </button>
-          </div>
+          </div> -->
 
           <!-- <div class="section-block">
             <div class="section-header">

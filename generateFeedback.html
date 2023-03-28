@@ -103,12 +103,12 @@
       }
       .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        /* width: 250px; */
+        width: 250px;
         margin: 10px 20px;
         text-align: center;
         background-color: white;
         border-radius: 20px;
-
+        /* border: 1px solid black; */
         cursor: pointer;
       }
       .card:hover {
@@ -121,15 +121,12 @@
       .container2 {
         padding: 2px 16px;
       }
-      .container2 h1 {
-        font-size: 20px;
-      }
       .card p {
         font-size: 9px;
       }
-      .vl {
-        border-left: 6px solid green;
-        height: 500px;
+
+      .container2 h1 {
+        font-size: 20px;
       }
     </style>
   </head>
@@ -345,7 +342,7 @@
           autocomplete="off"
         >
           <h1>
-            Generate Report 
+            Genrate Feedback File
             <button
               type="button"
               id="dashboardBtn"
@@ -364,340 +361,209 @@
               reload the page to proceed with your transaction.
             </div>
           </noscript>
-
-          <div class="section-block">
-          
+          <div class="section-block load-info">
+            <div class="section-header">
+              <h2 style="">Last Handoff File Generation Information</h2>
+            </div>
             <div class="section-contents">
               <div class="row">
-                <div class="col-sm-12">
-                  <div class="section-header" style="top: 0px">
-                    <button
-                      type="button"
-                      class="btn btn-success pull-right"
-                      style="background: #7fc374; color: #00126c"
-                    >
-                     <i class="fa fa-download" aria-hidden="true"></i>Generate All
-                    </button>
+                <div class="form-group">
+                  <label class="control-label col-sm-6">Status</label>
+                  <div class="col-sm-6">
+                    <p class="form-control-static">Successful</p>
                   </div>
-                  <h1>Recon Reports</h1>
-                  <div class="col-sm-12">
-                    <h2>As Sender</h2>
-                    <div class="row" style="margin-bottom: 20px">
-                      <div
-                        style="
-                          display: flex;
-                          justify-content: center;
-                          box-shadow: 0px 2px 0px 0px rgb(0 0 0 / 11%);
-                          border-radius: 20px;
-                        "
-                      >
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Instapay Transactions Switch Float – Outward</b></h1>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Instapay Reconciling Items – Outward (In BN Report Only)</b></h1>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Instapay Reconciling Items – Outward (in LBP Report Only)</b></h1>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Instapay Transactions Summary Report</b></h1>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- <div class="col-sm-6">
-                        <table
-                          id="g"
-                          class="table table-condensed table-striped table-hover"
-                          style="width: 100%"
-                        >
-                          <thead>
-                            <tr>
-                              <th colspan="2">WEACCESS HO Filename</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <input
-                                  type="checkbox"
-                                  id="file_listing"
-                                  name="file_listing"
-                                  value="LBP00000222012020095402.txt"
-                                  onclick="clickedRadio(this.value)"
-                                />
-                              </td>
-                              <td>LBPWEACCESS00000222012020095402.txt<br /></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="col-sm-6">
-                        <table
-                          id="g"
-                          class="table table-condensed table-striped table-hover"
-                          style="width: 100%"
-                        >
-                          <thead>
-                            <tr>
-                              <th colspan="2">IACESS HO Filename</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <input
-                                  type="checkbox"
-                                  id="file_listing"
-                                  name="file_listing"
-                                  value="LBP00000522110722092501.txt"
-                                  onclick="clickedRadio(this.value)"
-                                />
-                              </td>
-                              <td>
-                                <i class="fa fa-file" aria-hidden="true"></i
-                                >LBPIACCESS00000522110722092501.txt -
-                                <span style="color: green"> </span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div> -->
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-6">Generated By</label>
+                  <div class="col-sm-6">
+                    <p class="form-control-static">Super User</p>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-6">Last Generation Date</label>
+                  <div class="col-sm-6">
+                    <p class="form-control-static">01-12-2023 09:44:00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div
+            style="
+              background: #edf0ff;
+              padding: 20px 40px;
+              box-shadow: 0 8px 20px 0 rgb(0 0 0 / 15%);
+              border-radius: 10px;
+              margin-bottom: 15px;
+            "
+          >
+            <div class="row"><h2>Search Criteria</h2></div>
 
-                  <div class="col-sm-12">
-         
-                    <h2>As Receiver</h2>
-                    <div class="row" style="margin-bottom: 20px">
-                      <div
-                        style="
-                          display: flex;
-                          justify-content: center;
-                          box-shadow: 0px 2px 0px 0px rgb(0 0 0 / 11%);
-                          border-radius: 20px;
-                        "
-                      >
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Instapay Transactions Switch Float – Inward</b></h1>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Instapay Reconciling Items – Inward (In BN Report Only)</b></h1>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Instapay Reconciling Items – Inward (in LBP Report Only)</b></h1>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Instapay Transactions Summary Report</b></h1>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- <div class="col-sm-6">
-                        <table
-                          id="g"
-                          class="table table-condensed table-striped table-hover"
-                          style="width: 100%"
-                        >
-                          <thead>
-                            <tr>
-                              <th colspan="2">WEACCESS HO Filename</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <input
-                                  type="checkbox"
-                                  id="file_listing"
-                                  name="file_listing"
-                                  value="LBP00000222012020095402.txt"
-                                  onclick="clickedRadio(this.value)"
-                                />
-                              </td>
-                              <td>LBPWEACCESS00000222012020095402.txt<br /></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="col-sm-6">
-                        <table
-                          id="g"
-                          class="table table-condensed table-striped table-hover"
-                          style="width: 100%"
-                        >
-                          <thead>
-                            <tr>
-                              <th colspan="2">IACESS HO Filename</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <input
-                                  type="checkbox"
-                                  id="file_listing"
-                                  name="file_listing"
-                                  value="LBP00000522110722092501.txt"
-                                  onclick="clickedRadio(this.value)"
-                                />
-                              </td>
-                              <td>
-                                <i class="fa fa-file" aria-hidden="true"></i
-                                >LBPIACCESS00000522110722092501.txt -
-                                <span style="color: green"> </span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div> -->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="fms_book" class="control-label col-sm-5 mandatory" id="labelBook"
+                    >Type</label
+                  >
+                  <div class="col-sm-2 for-fms-book">
+                    <div class="select">
+                      <input
+                        id="rc_code"
+                        name="rc_code"
+                        class="form-control"
+                        type="hidden"
+                        value="000000"
+                        fieldname="Filename"
+                        placeholder="Select Instruction ID"
+                        mandatory="true"
+                        maxlength="40"
+                      /><input
+                        id="rc_code_view"
+                        class="form-control"
+                        type="text"
+                        fieldname="Instruction ID"
+                        placeholder=" Instruction ID"
+                        mandatory="true"
+                        maxlength="40"
+                        value="Inbound"
+                      /><i class="glyphicon glyphicon-menu-down"></i>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-12" style="margin-bottom: 20px">
-                  <div class="section-header" style="top: 0px">
-                    <button
-                      type="button"
-                      class="btn btn-success pull-right"
-                      style="background: #7fc374; color: #00126c"
-                    >
-                     <i class="fa fa-download" aria-hidden="true"></i>Generate All
-                    </button>
-                  </div>
-                  <h1>Recon Item Adjustment Reports</h1>
-                  
-                  <div class="col-sm-12">
-                    <h2>As Sender</h2>
-                    <div class="row" style="margin-bottom: 20px">
-                      <div
-                        style="
-                          display: flex;
-                          justify-content: center;
-                          box-shadow: 0px 2px 0px 0px rgb(0 0 0 / 11%);
-                          border-radius: 20px;
-                        "
-                      >
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Recon Item Adjustment – Current Report</b></h1>
-                          </div>
-                        </div>
+              </div>
+            </div>
+            <div class="" style="display: flex; justify-content: end; gap: 10px; margin-top: 10px">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="doSubmit();"
+                style="background: #7fc374; color: #00126c"
+              >
+                <i class="fa fa-search"></i> <span xlabel="btnSearch">Search</span>
+              </button>
+            </div>
+          </div> -->
 
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Recon Item Adjustment – Savings Report</b></h1>
-                          </div>
-                        </div>
+          <div class="section-block">
+            <div class="section-header">
+              <h2>MDS For Generation</h2>
+            </div>
 
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Recon Item Adjustment – LICC Report</b></h1>
-                          </div>
-                        </div>
+            <div class="section-contents">
+              <div style="display: flex; justify-content: center">
+                <div class="card">
+                  <i class="fa fa-5x fa-database icon" aria-hidden="true" style="color: green"></i>
+                  <div class="container2">
+                    <h1 style="color: black"><b>VOCALINK RECEIVING APPLICATION</b></h1>
 
-                        <div class="card">
-                          <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
-                          <div class="container2">
-                            <h1><b>Recon Item Adjustment – LPC Report</b></h1>
-                          </div>
-                        </div>
+                    <div class="row" style="margin-top: 5px">
+                      <div class="col-sm-12">
+                        <p>C:/VOCALINK/FEEDBACK / 03-06-2023</p>
                       </div>
-
-                      <!-- <div class="col-sm-6">
-                        <table
-                          id="g"
-                          class="table table-condensed table-striped table-hover"
-                          style="width: 100%"
-                        >
-                          <thead>
-                            <tr>
-                              <th colspan="2">WEACCESS HO Filename</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <input
-                                  type="checkbox"
-                                  id="file_listing"
-                                  name="file_listing"
-                                  value="LBP00000222012020095402.txt"
-                                  onclick="clickedRadio(this.value)"
-                                />
-                              </td>
-                              <td>LBPWEACCESS00000222012020095402.txt<br /></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="col-sm-6">
-                        <table
-                          id="g"
-                          class="table table-condensed table-striped table-hover"
-                          style="width: 100%"
-                        >
-                          <thead>
-                            <tr>
-                              <th colspan="2">IACESS HO Filename</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <input
-                                  type="checkbox"
-                                  id="file_listing"
-                                  name="file_listing"
-                                  value="LBP00000522110722092501.txt"
-                                  onclick="clickedRadio(this.value)"
-                                />
-                              </td>
-                              <td>
-                                <i class="fa fa-file" aria-hidden="true"></i
-                                >LBPIACCESS00000522110722092501.txt -
-                                <span style="color: green"> </span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div> -->
                     </div>
                   </div>
-               
                 </div>
-               
+                <div class="card">
+                    <i class="fa fa-5x fa-file icon" aria-hidden="true" style="color: green"></i>
+                    <div class="container2">
+                        <br/>
+                        <br/>
+                        <br/>
+                        
+                      <h1 style="color: black"><b>MBA</b></h1>
+  
+                      <div class="row" style="margin-top: 5px">
+                        <div class="col-sm-12">
+                          <p>C:/VOCALINK/FEEDBACK / 03-06-2023</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <i class="fa fa-5x fa-file icon" aria-hidden="true" style="color: green"></i>
+                    <div class="container2">
+                        <br/>
+                        <br/>
+                        <br/>
+                      <h1 style="color: black"><b>WEACCESS</b></h1>
+  
+                      <div class="row" style="margin-top: 5px">
+                        <div class="col-sm-12">
+                       
+                          <p>C:/VOCALINK/FEEDBACK / 03-06-2023</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <i class="fa fa-5x fa-file icon" aria-hidden="true" style="color: green"></i>
+                    <div class="container2">
+                        <br/>
+                        <br/>
+                        <br/>
+                      <h1 style="color: black"><b>iAccess</b></h1>
+  
+                      <div class="row" style="margin-top: 5px">
+                        <div class="col-sm-12">
+                       
+                          <p>C:/VOCALINK/FEEDBACK / 03-06-2023</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <i class="fa fa-5x fa-file icon" aria-hidden="true" style="color: green"></i>
+                    <div class="container2">
+                        <br/>
+                        <br/>
+                        <br/>
+                      <h1 style="color: black"><b>EMDS</b></h1>
+  
+                      <div class="row" style="margin-top: 5px">
+                        <div class="col-sm-12">
+                        
+                          <p>C:/VOCALINK/FEEDBACK / 03-06-2023</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <i class="fa fa-5x fa-file icon" aria-hidden="true" style="color: green"></i>
+                    <div class="container2">
+                        <br/>
+                        <br/>
+                        <br/>
+                      <h1 style="color: black"><b>LBCS</b></h1>
+  
+                      <div class="row" style="margin-top: 5px">
+                        <div class="col-sm-12">
+                          <p>C:/VOCALINK/FEEDBACK / 03-06-2023</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <i class="fa fa-5x fa-file icon" aria-hidden="true" style="color: green"></i>
+                    <div class="container2">
+                        <br/>
+                        <br/>
+                        <br/>
+                      <h1 style="color: black"><b>LinkBiz</b></h1>
+  
+                      <div class="row" style="margin-top: 5px">
+                        <div class="col-sm-12">
+                          <p>C:/VOCALINK/FEEDBACK / 03-06-2023</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- <div class="card">
+                  <i class="fa fa-5x fa-file-text icon" aria-hidden="true"></i>
+                  <div class="container2">
+                    <h1><b>LPC</b></h1>
+                  </div>
+                </div> -->
               </div>
             </div>
           </div>
